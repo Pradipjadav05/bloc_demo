@@ -10,16 +10,16 @@ class BlocDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Block Demo"),
-        centerTitle: true,
-      ),
+        appBar: AppBar(
+          title: Text("Block Demo"),
+          centerTitle: true,
+        ),
 
-      /*
+        /*
       * BlocBuilder Demo
       * */
 
-      /*body: BlocProvider(
+        /*body: BlocProvider(
         create: (BuildContext context) {
           return InternetBloc();
         },
@@ -38,11 +38,11 @@ class BlocDemo extends StatelessWidget {
         ),
       ), */
 
-      /*
+        /*
       * BlocListener Demo
       * */
 
-      body: BlocProvider(
+        /*body: BlocProvider(
         create: (BuildContext context) {
           return InternetBloc();
         },
@@ -65,7 +65,41 @@ class BlocDemo extends StatelessWidget {
             child: Container(),
           ),
         ),
-      ),
-    );
+      ),*/
+
+        /*
+      * BlocConsumer
+      * */
+
+        body: Center(
+          child: BlocProvider(
+            create: (_) => InternetBloc(),
+            child: BlocConsumer(
+              builder: (BuildContext context, state) {
+                if (state is InternetGainedState) {
+                  return Text("Connected...!!");
+                } else if (state is InternetLostState) {
+                  return Text("Disconnected...!!");
+                }
+                return Text("Loading...");
+              },
+              listener: (BuildContext context, state) {
+                if (state is InternetGainedState) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Connected...!!"),
+                    shape: StadiumBorder(),
+                  ));
+                }
+                if (state is InternetLostState) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Disconnected...!!"),
+                    shape: StadiumBorder(),
+                  ));
+                }
+              },
+              bloc: InternetBloc(),
+            ),
+          ),
+        ));
   }
 }
