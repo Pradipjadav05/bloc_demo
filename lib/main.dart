@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc/internet_bloc.dart';
+import 'bloc/internet_bloc_state.dart';
 import 'bloc_demo.dart';
 
 void main() {
@@ -11,9 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: BlocDemo(),
       title: "Bloc Demo",
     );
+
+   /* return BlocProvider(
+      create: (_) => InternetBloc(),
+      child: const MaterialApp(
+        home: BlocDemo(),
+        title: "Bloc Demo",
+      ),
+    );*/
   }
 }
