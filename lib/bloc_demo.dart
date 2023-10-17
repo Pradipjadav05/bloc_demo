@@ -16,8 +16,8 @@ class BlocDemo extends StatelessWidget {
         ),
 
         /*
-      * BlocBuilder Demo
-      * */
+        * BlocBuilder Demo
+        * */
 
         /*body: BlocProvider(
         create: (BuildContext context) {
@@ -39,8 +39,8 @@ class BlocDemo extends StatelessWidget {
       ), */
 
         /*
-      * BlocListener Demo
-      * */
+        * BlocListener Demo
+        * */
 
         /*body: BlocProvider(
         create: (BuildContext context) {
@@ -68,8 +68,8 @@ class BlocDemo extends StatelessWidget {
       ),*/
 
         /*
-      * BlocConsumer
-      * */
+        * BlocConsumer
+        * */
 
         body: Center(
           child: BlocProvider(

@@ -8,10 +8,19 @@ import 'internet_bloc_state.dart';
 
 class InternetBloc extends Bloc<InternetEvent, InternetState> {
   Connectivity _connectivity = Connectivity();
+
+  /*
+  * StreamSubscription:
+    - used handle and process asynchronous events or data over time.
+    - used to handle events emitted by a stream.
+  * */
+
   StreamSubscription connectivitySubscription;
 
   // InternetBloc(InternetState initialState) : super(initialState)
   // InternetBloc() : super(InternetInitialState());
+
+
   InternetBloc() : super(InternetInitialState()) {
     on<InternetLostEvent>((event, emit) => emit(InternetLostState()));
     on<InternetGainedEvent>((event, emit) => emit(InternetGainedState()));
